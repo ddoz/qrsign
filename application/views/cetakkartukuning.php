@@ -10,7 +10,7 @@
     <script>
         $(document).ready(function(){
             var qrcode = new QRCode("qr", {
-                text: "<?=base_url()?>validasikartu/<?=md5($kartu->id_kk)?>",
+                text: "<?=base_url()?>validasikartu/id/<?=md5($kartu->id_kk)?>",
                 width: 100,
                 height: 100,
                 colorDark : "#000000",
