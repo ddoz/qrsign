@@ -38,6 +38,10 @@
     <td class="tg-0lax">: <?=date("d M Y",strtotime($kartu->signed_date))?></td>
   </tr>
   <tr>
+    <td class="tg-0lax">Ditanda Tangani Oleh</td>
+    <td class="tg-0lax">: <?=$kartu->name?></td>
+  </tr>
+  <tr>
     <td class="tg-0lax">Kadaluarsa</td>
     <td class="tg-0lax">: <?=date("d M Y",strtotime($kartu->expired_date))?></td>
   </tr>
