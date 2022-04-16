@@ -5,9 +5,6 @@ class Validasikartu extends CI_Controller {
 
 	public function __construct() {
     parent::__construct();
-    if(empty($this->session->userdata('userId'))) {
-			redirect(base_url());
-		}
 	}
 
 	
