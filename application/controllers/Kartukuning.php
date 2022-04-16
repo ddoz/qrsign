@@ -13,7 +13,7 @@ class Kartukuning extends CI_Controller {
 	
 	public function index()	{
 
-      $this->db->select("pekerja.nama_lengkap,kartu_kuning.*");
+      $this->db->select("pekerja.nama_lengkap,pekerja.foto,pekerja.scan_ktp,pekerja.nik,kartu_kuning.*");
       $this->db->join("pekerja","pekerja.id=kartu_kuning.id_pekerja");
       $kartu = $this->db->get("kartu_kuning")->result();
         $data = array(
