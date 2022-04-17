@@ -76,13 +76,11 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => '127.0.0.1',
-	// 'hostname' => '103.140.189.205',
-	// 'username' => 'adam',
-	'username' => 'admin',
-	// 'password' => 'adam555',
-	'password' => 'Password.',
-	'database' => 'qrsign',
-	// 'database' => 'tripanca_paper_less',
+	'username' => 'root',
+
+	'password' => '123',
+	'database' => 'liza_qr',
+
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
