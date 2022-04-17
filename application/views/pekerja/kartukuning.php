@@ -46,7 +46,9 @@
                     <td><?=$row->expired_date?></td>
                     <td><?=$row->name?></td>
                     <td>
+                        <?php if($row->name!=null){ ?>
                         <a target="_blank" href="<?=base_url()?>pekerja/cetakkartukuning/<?=md5($row->id)?>" class="btn btn-warning btn-xs"><i class="fa fa-print"></i> Cetak Kartu</a>
+                        <?php }?>
                         <a onclick="return confirm('Hapus Data?')" href="<?=base_url()?>pekerja/hapuskartukuning/<?=md5($row->id_pekerja)?>/<?=md5($row->id)?>" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i> Hapus Data</a>
                     </td>
                 </tr>
