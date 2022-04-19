@@ -5,7 +5,6 @@ class Model_pengguna extends CI_Model {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('Model_aktiviti');
     }
     
     function get() {
