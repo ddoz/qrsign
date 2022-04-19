@@ -209,7 +209,7 @@ class Pekerja extends CI_Controller {
 
     public function hapus() {
         $id = $this->uri->segment(3);
-        $cek = $this->db->get_where('pekerja', array('md5(id)' => $id));
+        $cek = $this->db->get_where('kartu_kuning', array('md5(id_pekerja)' => $id));
         if($cek->num_rows()>0) {
             $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
