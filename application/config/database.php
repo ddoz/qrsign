@@ -76,10 +76,10 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => '127.0.0.1',
-	'username' => 'root',
+	'username' => 'admin',
 
-	'password' => '123',
-	'database' => 'liza_qr',
+	'password' => 'Password.',
+	'database' => 'qrsign',
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
