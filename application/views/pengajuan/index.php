@@ -13,7 +13,9 @@
     <div class="box-header with-border">
         Data Kartu Kuning Anda.
         <div class="pull-right">
+          <?php if($exist) { ?>
             <a href="<?=base_url()?>pengajuan/ajukankartu/<?=md5($this->session->userdata('userId'))?>" class="btn btn-success"><i class="fa fa-plus"></i> Ajukan Kartu Kuning</a>
+            <?php }?>
         </div>
       </div>
       <div class="box-body">

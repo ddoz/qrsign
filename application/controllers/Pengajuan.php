@@ -12,7 +12,8 @@ class Pengajuan extends CI_Controller {
 
 	
 	public function index()	{
-
+    $rowData = $this->db->get_where("pekerja",array("id_user"=>$this->session->userdata("userId")));
+    $exist = $rowData->num_rows() > 0 ? true : false;
     $this->db->select("kartu_kuning.*,users.name,kartu_kuning.id as id_kk");
     $this->db->from('kartu_kuning');
     $this->db->join("pekerja","pekerja.id=kartu_kuning.id_pekerja");
@@ -22,7 +23,8 @@ class Pengajuan extends CI_Controller {
             'script'    => 'script/js_arsip',
             'page'      => 'pengajuan/index',
             'link'      => 'pengajuan',
-            'kartu'     => $kartu
+            'kartu'     => $kartu,
+            'exist'     => $exist
         );
 
 		$this->load->view('layout/template',$data);
