@@ -38,7 +38,7 @@ class Welcome extends CI_Controller {
 			"name" => $this->input->post("nama_lengkap"),
 			"email" => $this->input->post("username"),
 			"password" => password_hash($this->input->post("password"),PASSWORD_BCRYPT),
-			"user_level" => "0"
+			"user_level" => "2"
 		];
 		$this->db->db_debug = false;
 		// Konfigurasi email
