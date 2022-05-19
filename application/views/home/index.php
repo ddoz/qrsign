@@ -53,18 +53,28 @@
     </div>
     <div class="box-body">
 
-        <h4>Grafik Pencari Kerja Per Tahun</h4>
+      <?php if($this->session->userdata('userLevel')!="2") { ?>
+          <h4>Grafik Pencari Kerja Per Tahun</h4>
+          <div class="col-md-6">
+
+              <figure class="highcharts-figure">
+              <div id="container"></div>
+              <p class="highcharts-description">
+                  Grafik menunjukkan kenaikan dan penurunan data pencari kerja tiap tahun.
+              </p>
+              </figure>
+            </div>
+            <?php }else { ?>
+
         <div class="col-md-6">
-
-
-            <figure class="highcharts-figure">
-            <div id="container"></div>
-            <p class="highcharts-description">
-                Grafik menunjukkan kenaikan dan penurunan data pencari kerja tiap tahun.
-            </p>
-            </figure>
-            
+          <h4>Syarat Pendaftaran Kartu Kuning Secara Online</h4>
+          <ul>
+            <li>Memiliki Akun Yang sudah terverifikasi melalui email</li>
+            <li>Melengkapi Data Pribadi yang ada di web</li>
+            <li>Menunggu verifikasi admin</li>
+          </ul>
         </div>
+      <?php }?>
     </div>
 </div>
 

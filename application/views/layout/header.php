@@ -144,6 +144,10 @@
           <li class="<?=(@$link=='kartukuning')?'active':''?>"><a href="<?php echo base_url();?>kartukuning"><i class="fa fa-pencil"></i> <span>Tanda Tangan Kartu</span></a></li>
         <li class="<?=(@$link=='arsip')?'active':''?>"><a href="<?php echo base_url();?>arsip"><i class="fa fa-print"></i> <span>Arsip Kartu Kuning</span></a></li>
         <?php }?>
+        <?php if($this->session->userdata('userLevel')=="2") { ?>
+          <li class="<?=(@$link=='datapribadi')?'active':''?>"><a href="<?php echo base_url();?>datapribadi"><i class="fa fa-user"></i> <span>Data Pribadi</span></a></li>
+          <li class="<?=(@$link=='pengajuan')?'active':''?>"><a href="<?php echo base_url();?>pengajuan"><i class="fa fa-archive"></i> <span>Pengajuan Kartu Kuning</span></a></li>
+        <?php }?>
         
       </ul>
     </section>

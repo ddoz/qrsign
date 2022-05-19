@@ -3,8 +3,7 @@
         Kartu Kuning
       </h1>
       <ol class="breadcrumb">
-        <li><i class="fa fa-envelope"></i> Admin</li>
-        <li class="active">Pencari Kerja</li>
+        <li><i class="fa fa-envelope"></i> Pekerja</li>
         <li class="active"><i class="fa fa-plus"></i> Kartu Kuning</li>
       </ol>
     </section>
@@ -12,10 +11,9 @@
 <section class="content">
 <div class="box box-secondary">
     <div class="box-header with-border">
-        Data Kartu Kuning - <?=$pekerja->nama_lengkap?>.
+        Data Kartu Kuning Anda.
         <div class="pull-right">
-        <a href="<?=base_url()?>pekerja" class="btn btn-warning"><i class="fa fa-arrow-left"></i></a>
-            <a href="<?=base_url()?>pekerja/ajukankartu/<?=md5($pekerja->id)?>" class="btn btn-success"><i class="fa fa-plus"></i> Ajukan Kartu Kuning</a>
+            <a href="<?=base_url()?>pengajuan/ajukankartu/<?=md5($this->session->userdata('userId'))?>" class="btn btn-success"><i class="fa fa-plus"></i> Ajukan Kartu Kuning</a>
         </div>
       </div>
       <div class="box-body">
@@ -35,8 +33,8 @@
                 </tr>
             </thead>
             <tbody>
-            <?php $i = 1; if(!empty($kartukuning)) { 
-              foreach($kartukuning as $row){ ?>
+            <?php $i = 1; if(!empty($kartu)) { 
+              foreach($kartu as $row){ ?>
                 <tr>
                     <td><?=$i++?></td>
                     <td><?=$row->tahun_cetak?></td>
@@ -49,10 +47,9 @@
                         <?php if($row->name!=null){ ?>
                         <a target="_blank" href="<?=base_url()?>pekerja/cetakkartukuning/<?=md5($row->id)?>" class="btn btn-warning btn-xs"><i class="fa fa-print"></i> Cetak Kartu</a>
                         <?php }?>
-                        <?php if($row->status_pendaftaran=="register"){ ?>
-                        <a onclick="return confirm('Proses Data? untuk ditandatangani pimpinan.')" href="<?=base_url()?>pekerja/proseskartukuning/<?=md5($row->id_pekerja)?>/<?=md5($row->id)?>" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> Proses Data</a>
-                          <?php }?>
+                        <?php if($row->status_pendaftaran=="register") { ?>
                         <a onclick="return confirm('Hapus Data?')" href="<?=base_url()?>pekerja/hapuskartukuning/<?=md5($row->id_pekerja)?>/<?=md5($row->id)?>" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i> Hapus Data</a>
+                        <?php }?>
                     </td>
                 </tr>
             <?php }}?>

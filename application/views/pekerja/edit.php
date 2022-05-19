@@ -93,8 +93,50 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="">Keterampilan</label>
-                <input type="text" name="keterampilan" value="<?=$pekerja->keterampilan?>" required class="form-control">
+                <label for="">Tahun Lulus</label>
+                <input type="text" name="tahun_lulus" value="<?=$pekerja->tahun_lulus?>" required class="form-control">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Keterampilan 1</label>
+                        <input type="text" name="keterampilan" value="<?=$pekerja->keterampilan?>" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Tahun </label>
+                        <input type="text" name="tahun_keterampilan" value="<?=$pekerja->tahun_keterampilan?>" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Keterampilan 2</label>
+                        <input type="text" name="keterampilan_2" value="<?=$pekerja->keterampilan_2?>" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Tahun </label>
+                        <input type="text" name="tahun_keterampilan2" value="<?=$pekerja->tahun_keterampilan2?>" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Keterampilan 3</label>
+                        <input type="text" name="keterampilan_3" value="<?=$pekerja->keterampilan_3?>" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Tahun </label>
+                        <input type="text" name="tahun_keterampilan3" value="<?=$pekerja->tahun_keterampilan3?>" class="form-control">
+                    </div>
+                </div>
             </div>
             
             <div class="form-group">

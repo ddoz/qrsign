@@ -53,7 +53,7 @@
                     <td><?=$row->signed_date?></td>
                     <td><?=$row->expired_date?></td>
                     <td>
-                      <?php if($row->status_pendaftaran=="register") { ?>
+                      <?php if($row->status_pendaftaran=="process") { ?>
                         <a onclick="return confirm('Tanda Tangani Kartu ini untuk dicetak?')" href="<?=base_url()?>kartukuning/ttd/<?=md5($row->id)?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Tanda Tangan</a>
                       <?php }?>
                     </td>

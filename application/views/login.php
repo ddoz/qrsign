@@ -68,6 +68,8 @@
       <div class="row">
         <div class="col-xs-12 text-center">
           <hr>
+          Belum Memiliki Akun, Daftarkan diri anda<br>
+          <a href="<?=base_url()?>welcome/register" class="btn btn-success btn-flat">Daftar</a>
         </div>
       </div>
     </form>

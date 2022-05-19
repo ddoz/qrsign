@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pekerja extends CI_Controller {
+class Datapribadi extends CI_Controller {
 
 	public function __construct() {
     parent::__construct();
@@ -12,25 +12,18 @@ class Pekerja extends CI_Controller {
 
 	
 	public function index()	{
-        $data = array(
-            'script'    => 'script/js_pekerja',
-            'page'      => 'pekerja/index',
-            'link'      => 'pekerja',
-            'table'     => $this->db->get("pekerja")->result()
-        );
-
-		$this->load->view('layout/template',$data);
+    $rowData = $this->db->get_where("pekerja",array("id_user"=>$this->session->userdata("userId")));
+    $exist = $rowData->num_rows() > 0 ? true : false;
+    $data = array(
+      'script'    => 'script/js_pekerja',
+      'page'      => 'datapribadi/form',
+      'link'      => 'datapribadi',
+      'exist'     => $exist,
+      'profil'    => $rowData->row()
+    );
+    $this->load->view('layout/template',$data);
   }
     
-    public function form() {
-        $data = array(
-            'script'    => 'script/js_pekerja',
-            'page'      => 'pekerja/form',
-            'link'      => 'pekerja',
-        );
-		$this->load->view('layout/template',$data);
-    }
-
     public function kartukuning() {
       $id = $this->uri->segment(3);
 
@@ -123,6 +116,7 @@ class Pekerja extends CI_Controller {
             "tahun_keterampilan2"              => $this->input->post('tahun_keterampilan2'),
             "keterampilan_3"              => $this->input->post('keterampilan_3'),
             "tahun_keterampilan3"              => $this->input->post('tahun_keterampilan3'),
+            'id_user'             => $this->session->userdata('userId')
         );
 
         $config['upload_path']          = './uploads/';
@@ -132,38 +126,65 @@ class Pekerja extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        if(!$this->upload->do_upload("foto")) {
-          $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Fail!</strong> Gagal simpan data. Pas Poto tidak valid.
-          </div>');
-          redirect(base_url()."pekerja");
-        }
+        
 
-        $data['foto'] = $this->upload->data('file_name');
-
-        if(!$this->upload->do_upload("scan_ktp")) {
-          $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Fail!</strong> Gagal simpan data. Scan KTP Tidak Valid
-          </div>');
-          redirect(base_url()."pekerja");
-        }
-
-        $data['scan_ktp'] = $this->upload->data('file_name');
-
-        if($this->db->insert('pekerja',$data)) {
-            $this->session->set_flashdata('status_crud','<div class="alert alert-success alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Success!</strong> Berhasil simpan data.
-          </div>');
+        $rowData = $this->db->get_where("pekerja",array("id_user"=>$this->session->userdata("userId")));
+        if($rowData->num_rows()>0) {
+          if($this->upload->do_upload("foto")) {
+            $data['foto'] = $this->upload->data('file_name');
+          }
+  
+  
+          if($this->upload->do_upload("scan_ktp")) {
+            $data['scan_ktp'] = $this->upload->data('file_name');
+          }
+  
+          $this->db->where('id_user',$this->session->userdata('userId'));
+          if($this->db->update('pekerja',$data)) {
+              $this->session->set_flashdata('status_crud','<div class="alert alert-success alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Success!</strong> Berhasil simpan data.
+            </div>');
+          }else {
+              $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Fail!</strong> Gagal simpan data.
+            </div>');
+          }
         }else {
+          if(!$this->upload->do_upload("foto")) {
             $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Fail!</strong> Gagal simpan data.
-          </div>');
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Fail!</strong> Gagal simpan data. Pas Poto tidak valid.
+            </div>');
+            redirect(base_url()."datapribadi");
+          }
+  
+          $data['foto'] = $this->upload->data('file_name');
+  
+          if(!$this->upload->do_upload("scan_ktp")) {
+            $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Fail!</strong> Gagal simpan data. Scan KTP Tidak Valid
+            </div>');
+            redirect(base_url()."datapribadi");
+          }
+  
+          $data['scan_ktp'] = $this->upload->data('file_name');
+          $data["id_user"] = $this->session->userdata('userId');
+          if($this->db->insert('pekerja',$data)) {
+              $this->session->set_flashdata('status_crud','<div class="alert alert-success alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Success!</strong> Berhasil simpan data.
+            </div>');
+          }else {
+              $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Fail!</strong> Gagal simpan data.
+            </div>');
+          }
         }
-        redirect(base_url()."pekerja");
+        redirect(base_url()."datapribadi");
     }
 
     public function update() {
@@ -178,13 +199,7 @@ class Pekerja extends CI_Controller {
           "agama"              => $this->input->post('agama'),
           "alamat"              => $this->input->post('alamat'),
           "pendidikan_terakhir"              => $this->input->post('pendidikan_terakhir'),
-          "tahun_lulus"              => $this->input->post('tahun_lulus'),
           "keterampilan"              => $this->input->post('keterampilan'),
-          "tahun_keterampilan"              => $this->input->post('tahun_keterampilan'),
-          "keterampilan_2"              => $this->input->post('keterampilan_2'),
-          "tahun_keterampilan2"              => $this->input->post('tahun_keterampilan2'),
-          "keterampilan_3"              => $this->input->post('keterampilan_3'),
-          "tahun_keterampilan3"              => $this->input->post('tahun_keterampilan3'),
         );
 
         $config['upload_path']          = './uploads/';
@@ -264,59 +279,7 @@ class Pekerja extends CI_Controller {
       }
 
       redirect(base_url()."pekerja/kartukuning/".$idpekerja);
-    }
-
-    public function proseskartukuning() {
-      $idpekerja = $this->uri->segment(3);
-      $id = $this->uri->segment(4);
-      $cek = $this->db->get_where('kartu_kuning', array('md5(id)' => $id));
-      
-      $this->db->where('md5(id)', $id);
-      if($this->db->update('kartu_kuning',array('status_pendaftaran'=>'process'))) {
-          //send notif email  
-          $config = [
-                'mailtype'  => 'html',
-                'charset'   => 'utf-8',
-                'protocol'  => 'smtp',
-                'smtp_host' => 'smtp.gmail.com',
-                'smtp_user' => 'i.qrsign@gmail.com',  // Email gmail
-                'smtp_pass'   => 'QrSign@20',  // Password gmail
-                'smtp_crypto' => 'tls',
-                'smtp_port'   => 587,
-                'newline' => "\r\n"
-            ];
-
-            // Load library email dan konfigurasinya
-            $this->load->library('email', $config);
-
-            // Email dan nama pengirim
-            $this->email->from('i.qrsign@gmail.com', 'Qr Sign');
-
-            // Email penerima
-            $this->email->to($data['email']); // Ganti dengan email tujuan
-
-            // Lampiran email, isi dengan url/path file
-            // $this->email->attach(base_url()."assets/front/images/logo.png");
-
-            // Subject email
-            $this->email->subject('Informasi Kartu Kuning QRSIGN');
-
-            // Isi email
-            $this->email->message("Saat ini pengajuan <b>Kartu Kuning</b> anda sedang di proses. Silahkan Cek pada web <a href='".base_url()."'>Klik Disini</a>.");
-
-          $this->session->set_flashdata('status_crud','<div class="alert alert-success alert-dismissible">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Success!</strong> Berhasil proses data. Selanjutnya akan diproses oleh pimpinan untuk ditandatangani.
-        </div>');
-      }else {
-          $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Fail!</strong> Gagal proses data.
-        </div>');
-      }
-
-      redirect(base_url()."pekerja/kartukuning/".$idpekerja);
-    }
+  }
 
 
 }
