@@ -153,9 +153,10 @@ class Datapribadi extends CI_Controller {
           }
         }else {
           if(!$this->upload->do_upload("foto")) {
+            $error = $this->upload->display_errors();
             $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              <strong>Fail!</strong> Gagal simpan data. Pas Poto tidak valid.
+              <strong>Fail!</strong> Gagal simpan data. Pas Poto tidak valid. "'.$error.'"
             </div>');
             redirect(base_url()."datapribadi");
           }
@@ -163,9 +164,10 @@ class Datapribadi extends CI_Controller {
           $data['foto'] = $this->upload->data('file_name');
   
           if(!$this->upload->do_upload("scan_ktp")) {
+            $error = $this->upload->display_errors();
             $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              <strong>Fail!</strong> Gagal simpan data. Scan KTP Tidak Valid
+              <strong>Fail!</strong> Gagal simpan data. Scan KTP Tidak Valid. "'.$error.'"
             </div>');
             redirect(base_url()."datapribadi");
           }
