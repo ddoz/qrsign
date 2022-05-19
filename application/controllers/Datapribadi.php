@@ -120,7 +120,7 @@ class Datapribadi extends CI_Controller {
         );
 
         $config['upload_path']          = './uploads/';
-        $config['allowed_types']        = 'jpg|png';
+        $config['allowed_types']        = 'jpg|png|jpeg';
         $config['max_size']             = 1024; //1MB
         $config['encrypt_name']         = true;
 
