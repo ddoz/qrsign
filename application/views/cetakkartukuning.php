@@ -33,7 +33,7 @@
       }
     </style>
 </head>
-<body onload="" style="background-color: rgb(175,169,123)">
+<body onload="window.print()" style="background-color: rgb(175,169,123)">
 <!--  -->
 <br>
 <table width="100%" align="center" cellpadding="2"  style="background-color: rgb(175,169,123); filter: alpha(opacity=40); opacity: 0.95;border:1px black solid;">
@@ -89,7 +89,7 @@
         <div id="qr"></div>
     </td>
     <td rowspan="8" align="center">
-      <img src="<?=base_url()?>uploads/<?=$kartu->foto?>" style="width:100px;120px;" alt="">
+      <img src="<?=base_url()?>uploads/<?=$kartu->foto?>" style="width:100px;height100px;" alt="">
     </td>
     <td >Status</td>
     <td >: <?=$kartu->status_menikah?></td>
