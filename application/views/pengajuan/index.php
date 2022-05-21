@@ -50,7 +50,7 @@
                         <a target="_blank" href="<?=base_url()?>pekerja/cetakkartukuning/<?=md5($row->id)?>" class="btn btn-warning btn-xs"><i class="fa fa-print"></i> Cetak Kartu</a>
                         <?php }?>
                         <?php if($row->status_pendaftaran=="register") { ?>
-                        <a onclick="return confirm('Hapus Data?')" href="<?=base_url()?>pekerja/hapuskartukuning/<?=md5($row->id_pekerja)?>/<?=md5($row->id)?>" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i> Hapus Data</a>
+                        <a onclick="return confirm('Hapus Data?')" href="<?=base_url()?>pengajuan/hapuskartukuning/<?=md5($row->id_pekerja)?>/<?=md5($row->id)?>" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i> Hapus Data</a>
                         <?php }?>
                     </td>
                 </tr>

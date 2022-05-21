@@ -20,11 +20,11 @@
     <div class="box-body">
         <form method="POST" action="<?=base_url()?>pekerja/save" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="">Pas Poto</label>
+                <label for="">Pas Poto (jpg/png)</label>
                 <input type="file" name="foto" required class="form-control">
             </div>
             <div class="form-group">
-                <label for="">Scan KTP</label>
+                <label for="">Scan KTP (jpg/png)</label>
                 <input type="file" name="scan_ktp" required class="form-control">
             </div>
             <div class="form-group">
@@ -94,6 +94,10 @@
             <div class="form-group">
                 <label for="">Tahun Lulus</label>
                 <input type="text" name="tahun_lulus" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Scan Ijazah (jpg/png)</label>
+                <input type="file" name="ijazah" class="form-control">
             </div>
             <div class="row">
                 <div class="col-md-6">

@@ -101,6 +101,13 @@
                 <label for="">Tahun Lulus</label>
                 <input type="text" name="tahun_lulus" value="<?=$profil->tahun_lulus?>" required class="form-control">
             </div>
+            <div class="form-group">
+                <label for="">Scan Ijazah (jpg/png)</label>
+                <input type="file" name="ijazah" class="form-control">
+            </div>
+            <?php if(@$profil->ijazah!=""){ ?> 
+                    <img src="<?=base_url()?>uploads/<?=$profil->ijazah?>" width="150" alt="">    
+            <?php } ?> 
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">

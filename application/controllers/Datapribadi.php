@@ -126,14 +126,15 @@ class Datapribadi extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        
-
         $rowData = $this->db->get_where("pekerja",array("id_user"=>$this->session->userdata("userId")));
         if($rowData->num_rows()>0) {
           if($this->upload->do_upload("foto")) {
             $data['foto'] = $this->upload->data('file_name');
           }
-  
+
+          if($this->upload->do_upload("ijazah")) {
+            $data['ijazah'] = $this->upload->data('file_name');
+          }
   
           if($this->upload->do_upload("scan_ktp")) {
             $data['scan_ktp'] = $this->upload->data('file_name');
@@ -188,100 +189,5 @@ class Datapribadi extends CI_Controller {
         }
         redirect(base_url()."datapribadi");
     }
-
-    public function update() {
-        $id = $this->input->post('id');
-        $data = array(
-          "nama_lengkap"              => $this->input->post('nama_lengkap'),
-          "nik"              => $this->input->post('nik'),
-          "tempat_lahir"              => $this->input->post('tempat_lahir'),
-          "tanggal_lahir"              => date('Y-m-d',strtotime($this->input->post('tanggal_lahir'))),
-          "jenis_kelamin"              => $this->input->post('jenis_kelamin'),
-          "status_menikah"              => $this->input->post('status_menikah'),
-          "agama"              => $this->input->post('agama'),
-          "alamat"              => $this->input->post('alamat'),
-          "pendidikan_terakhir"              => $this->input->post('pendidikan_terakhir'),
-          "keterampilan"              => $this->input->post('keterampilan'),
-        );
-
-        $config['upload_path']          = './uploads/';
-        $config['allowed_types']        = 'jpg|png';
-        $config['max_size']             = 1024; //1MB
-        $config['encrypt_name']         = true;
-
-        $this->load->library('upload', $config);
-
-        if($this->upload->do_upload("foto")) {
-          $data['foto'] = $this->upload->data('file_name');
-        }
-
-
-        if($this->upload->do_upload("scan_ktp")) {
-          $data['scan_ktp'] = $this->upload->data('file_name');
-        }
-        
-        $this->db->where('id', $id);
-        if($this->db->update('pekerja',$data)) {
-            $this->session->set_flashdata('status','<div class="alert alert-success alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Success!</strong> Berhasil ubah data.
-          </div>');
-        }else {
-            $this->session->set_flashdata('status','<div class="alert alert-danger alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Fail!</strong> Gagal ubah data.
-          </div>');
-        }
-        redirect(base_url()."pekerja");
-    }
-
-
-    public function hapus() {
-        $id = $this->uri->segment(3);
-        $cek = $this->db->get_where('kartu_kuning', array('md5(id_pekerja)' => $id));
-        if($cek->num_rows()>0) {
-            $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Fail!</strong> Gagal hapus data. Data sudah ada di Kartu Kuning.
-              </div>');
-        }else {
-            $this->db->where('md5(id)', $id);
-            if($this->db->delete('pekerja')) {
-                $this->session->set_flashdata('status_crud','<div class="alert alert-success alert-dismissible">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Success!</strong> Berhasil hapus data.
-              </div>');
-            }else {
-                $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Fail!</strong> Gagal hapus data.
-              </div>');
-            }
-        }
-
-        redirect(base_url()."pekerja");
-    }
-
-    public function hapuskartukuning() {
-      $idpekerja = $this->uri->segment(3);
-      $id = $this->uri->segment(4);
-      $cek = $this->db->get_where('kartu_kuning', array('md5(id)' => $id));
-      
-      $this->db->where('md5(id)', $id);
-      if($this->db->delete('kartu_kuning')) {
-          $this->session->set_flashdata('status_crud','<div class="alert alert-success alert-dismissible">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Success!</strong> Berhasil hapus data.
-        </div>');
-      }else {
-          $this->session->set_flashdata('status_crud','<div class="alert alert-danger alert-dismissible">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Fail!</strong> Gagal hapus data.
-        </div>');
-      }
-
-      redirect(base_url()."pekerja/kartukuning/".$idpekerja);
-  }
-
 
 }
