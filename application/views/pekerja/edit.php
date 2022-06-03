@@ -57,8 +57,10 @@
                 <label for="">Status Menikah</label>
                 <select name="status_menikah" id="status_menikah" required class="form-control select2">
                     <option value="">Pilih</option>
-                    <option <?=($pekerja->status_menikah=="Belum Menikah")?"selected":""?> value="Belum Menikah">Belum Menikah</option>
-                    <option <?=($pekerja->status_menikah=="Menikah")?"selected":""?> value="Menikah">Menikah</option>
+                    <option <?=($pekerja->status_menikah=="Belum Kawin")?"selected":""?> value="Belum Kawin">Belum Kawin</option>
+                    <option <?=($pekerja->status_menikah=="Kawin")?"selected":""?> value="Kawin">Kawin</option>
+                    <option <?=($pekerja->status_menikah=="Janda")?"selected":""?> value="Janda">Janda</option>
+                    <option <?=($pekerja->status_menikah=="Duda")?"selected":""?> value="Duda">Duda</option>
                 </select>
             </div>
             <div class="form-group">
@@ -99,7 +101,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Keterampilan 1</label>
+                        <label for="">Keterampilan 1 (Photoshop, Microsoft Word, dll)</label>
                         <input type="text" name="keterampilan" value="<?=$pekerja->keterampilan?>" class="form-control">
                     </div>
                 </div>
@@ -113,7 +115,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Keterampilan 2</label>
+                        <label for="">Keterampilan 2 (Photoshop, Microsoft Word, dll)</label>
                         <input type="text" name="keterampilan_2" value="<?=$pekerja->keterampilan_2?>" class="form-control">
                     </div>
                 </div>
@@ -127,7 +129,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Keterampilan 3</label>
+                        <label for="">Keterampilan 3 (Photoshop, Microsoft Word, dll)</label>
                         <input type="text" name="keterampilan_3" value="<?=$pekerja->keterampilan_3?>" class="form-control">
                     </div>
                 </div>
