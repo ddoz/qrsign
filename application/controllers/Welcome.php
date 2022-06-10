@@ -73,12 +73,13 @@ class Welcome extends CI_Controller {
         $this->email->message("Silahkan Klik Link dibawah ini untuk melakukan aktivasi Akun.<br><br> Klik <strong><a href='".base_url()."welcome/aktivasi/".md5($data['email'])."' target='_blank' rel='noopener'>disini</a></strong>.");
 
         // Tampilkan pesan sukses atau error
-        if ($this->email->send()) {
-            $this->session->set_flashdata('status','Registrasi sukses. Silahkan Cek email untuk instruksi lebih lanjut');
+		// $this->email->send()
+        if (true) {
+            // $this->session->set_flashdata('status','Registrasi sukses. Silahkan Cek email untuk instruksi lebih lanjut');
 			
 			if($this->db->insert('users',$data)) {
 
-				$this->session->set_flashdata('status','Registrasi sukses. Silahkan  Cek email untuk instruksi lebih lanjut');
+				$this->session->set_flashdata('status','Registrasi sukses. Silahkan Login.');
 			}else {
 				$this->session->set_flashdata('status','Registrasi gagal. Silahkan coba dengan username lainnya.');
 			}
