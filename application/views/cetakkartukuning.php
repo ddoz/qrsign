@@ -8,6 +8,9 @@
     <style>
       @media print {
         footer {page-break-after: always;}
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
       }
     </style>
     <script src="<?=base_url()?>assets/jquery.min.js"></script>
@@ -35,13 +38,14 @@
     <style>
       body {
         -webkit-print-color-adjust: exact !important;
+        font-family: Arial, Helvetica, sans-serif;
       }
     </style>
 </head>
-<body onload="window.print()" style="background-color: rgb(175,169,123)">
+<body onload="window.print()" style="background-color: #f4f279">
 <!--  -->
 <br>
-<!-- <table width="100%" align="center" cellpadding="2"  style="background-color: rgb(175,169,123); filter: alpha(opacity=40); opacity: 0.95;border:1px black solid;">
+<!-- <table width="100%" align="center" cellpadding="2"  style="background-color: #f4f279; filter: alpha(opacity=40); opacity: 0.95;border:1px black solid;">
 <thead>
   <tr>
     <th></th>
@@ -135,20 +139,26 @@
   </tr>
 </tbody>
 </table> -->
-<table  width="100%" align="center" cellpadding="2"  style="background-color: rgb(175,169,123); filter: alpha(opacity=40); opacity: 0.95;border:1px black solid;">
+<table  width="100%" align="center" cellpadding="2"  style="background-color: #f4f279; filter: alpha(opacity=40); opacity: 0.95;border:1px black solid;">
 <thead>
   <tr>
-    <th style="text-align:left" colspan="3">PENDIDIKAN FORMAL :</th>
+    <th style="text-align:left" colspan="3"></th>
     <th width="60"> <img src="<?=base_url()?>assets/logo.png" width="50" alt=""></th>
     <th colspan="3">PEMERINTAH KABUPATEN TANGGAMUS<br>DINAS TENAGA KERJA</th>
   </tr>
 </thead>
 <tbody>
   <tr>
+    <th style="text-align:left" colspan="3">PENDIDIKAN FORMAL :</th>
+    <td></td>
+    <td></td>
+    <td align="right" colspan="4">Kartu AK/1</td>
+  </tr>
+  <tr>
     <td><?=$kartu->pendidikan_terakhir?> </td>
     <td>: Th <?=$kartu->tahun_lulus?></td>
     <td></td>
-    <td colspan="4">KARTU TANDA BUKTI PENDAFTARAN PENCARI KERJA</td>
+    <td align="center" colspan="4" style="border:1px solid black;">KARTU TANDA BUKTI PENDAFTARAN PENCARI KERJA</td>
   </tr>
   <tr>
     <td></td>
@@ -210,12 +220,12 @@
     <td>: <?=$kartu->status_menikah?></td>
   </tr>
   <tr>
-    <td colspan="3" style="text-align:center">u.b. Kasi Penempatan dan Pelatihan</td>
+    <td colspan="3" style="text-align:center"></td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <td colspan="3" style="text-align:center">Tenaga Kerja</td>
+    <td colspan="3" style="text-align:center"></td>
     <td>Agama</td>
     <td>: <?=$kartu->agama?></td>
   </tr>
@@ -261,62 +271,57 @@
 .tg .tg-0lax{text-align:left;vertical-align:top}
 .tg .tg-73oq{border-color:#000000;text-align:left;vertical-align:top}
 </style>
-<table class="tg" width="100%" style="background-color: rgb(175,169,123);">
+<table class="tg" width="100%" style="background-color: #f4f279;">
   <tbody>
   <tr>
     <th class="tg-0lax" rowspan="2">LAPORAN</th>
     <th class="tg-0lax" rowspan="2"></th>
     <th class="tg-baqh" rowspan="2">Tgl-Bln-Thn</th>
     <th class="tg-baqh" rowspan="2">Tanda tangan pengantar kerja / <br>petugas pendaftar <br>Cantumkan NIP</th>
-    <th class="tg-0lax">KETENTUAN</th>
-    <th class="tg-0lax"></th>
+    <th class="tg-0lax" colspan="2">KETENTUAN</th>
   </tr>
   <tr>
-    <th class="tg-0lax"><span style="font-weight:400;font-style:normal">1 </span></th>
-    <th class="tg-0lax"><span style="font-weight:400;font-style:normal">Berlaku Nasional.</span></th>
+    <th class="tg-0lax" colspan="2"><span style="font-weight:400;font-style:normal">1. Berlaku Nasional.</span></th>
   </tr>
   <tr>
     <td class="tg-0lax">Pertama</td>
     <td class="tg-0lax"></td>
     <td class="tg-0lax"></td>
     <td class="tg-0lax"></td>
-    <td class="tg-0lax">2 <br></td>
-    <td class="tg-0lax">Bila ada penambahan data / keterangan lainnya atau <br>telah mendapatkan pekerjaan, harap segera melapor.</td>
+    <td class="tg-0lax" colspan="2">2. Bila ada penambahan data / keterangan lainnya atau <br>&nbsp;&nbsp;&nbsp;&nbsp;telah mendapatkan pekerjaan, harap segera melapor.</td>
   </tr>
   <tr>
     <td class="tg-0lax">Kedua</td>
     <td class="tg-0lax"></td>
     <td class="tg-0lax"></td>
     <td class="tg-0lax"></td>
-    <td class="tg-0lax">3</td>
-    <td class="tg-0lax"><span style="font-weight:400;font-style:normal">Apabila pencari kerja yang bersangkutan telah diterima </span><br><span style="font-weight:400;font-style:normal">bekerja maka instansi yang menerima agar </span><br><span style="font-weight:400;font-style:normal">mengembalikan AK-1 kepada Dinas Tenaga Kerja.</span></td>
+    <td class="tg-0lax" colspan="2"><span style="font-weight:400;font-style:normal">3. Apabila pencari kerja yang bersangkutan telah diterima </span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:400;font-style:normal">bekerja maka instansi yang menerima agar </span><br><span style="font-weight:400;font-style:normal">&nbsp;&nbsp;&nbsp;&nbsp;mengembalikan AK-1 kepada Dinas Tenaga Kerja.</span></td>
   </tr>
   <tr>
     <td class="tg-0lax">Ketiga</td>
     <td class="tg-0lax"></td>
     <td class="tg-0lax"></td>
     <td class="tg-0lax"></td>
-    <td class="tg-0lax">4 </td>
-    <td class="tg-0lax"><span style="font-weight:400;font-style:normal">Kartu ini berlaku selama 2 tahun dengan melapora setiap </span><br><span style="font-weight:400;font-style:normal">6 bulan sekali bagi pencari kerja yang belum mendapat </span><br><span style="font-weight:400;font-style:normal">pekerjaan.</span></td>
+    <td class="tg-0lax" colspan="2"><span style="font-weight:400;font-style:normal">4. Kartu ini berlaku selama 2 tahun dengan melapora setiap </span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:400;font-style:normal">6 bulan sekali bagi pencari kerja yang belum mendapat </span><br><span style="font-weight:400;font-style:normal">&nbsp;&nbsp;&nbsp;&nbsp;pekerjaan.</span></td>
   </tr>
   <tr>
-    <td class="tg-0lax" colspan="6"></td>
+    <td class="tg-0lax" style="border-left:0;border-right:0" colspan="6"></td>
   </tr>
   <tr>
-    <td class="tg-73oq">Diterima di</td>
-    <td class="tg-73oq"></td>
-    <td class="tg-73oq"></td>
-    <td class="tg-73oq">KOTA AGUNG</td>
-    <td class="tg-73oq"></td>
-    <td class="tg-73oq"></td>
+    <td style="border:none;border-left:1px solid black;" class="">Diterima di</td>
+    <td  style="border:none;" class=""></td>
+    <td  style="border:none;" class=""></td>
+    <td  style="border:none;" class="">: KOTA AGUNG</td>
+    <td  style="border:none;" class=""></td>
+    <td style="border:none;border-right:1px solid black;" class=""></td>
   </tr>
   <tr>
-    <td class="tg-73oq">Terhitung Mulai Tanggal</td>
-    <td class="tg-73oq"></td>
-    <td class="tg-73oq"></td>
-    <td class="tg-73oq"></td>
-    <td class="tg-73oq"></td>
-    <td class="tg-73oq"></td>
+    <td  style="border:none;border-bottom:1px solid black;border-left:1px solid black;">Terhitung Mulai Tanggal</td>
+    <td  style="border:none;border-bottom:1px solid black"></td>
+    <td  style="border:none;border-bottom:1px solid black"></td>
+    <td  style="border:none;border-bottom:1px solid black"></td>
+    <td  style="border:none;border-bottom:1px solid black"></td>
+    <td  style="border:none;border-bottom:1px solid black;border-right:1px solid black;"></td>
   </tr>
 </tbody>
 </table> 
